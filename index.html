@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./style.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            function App() {
+                const [text, setText] = React.useState("")
+                const [text2, setText2] = React.useState("")
+
+                const handleButton = () => {
+                    if (text.trim().length == 0) {
+                        setText2("sz harf kirtmadingiz")
+                    } else if (text.trim().length == 5) {
+                        setText2("sz 5ta harf kritdingz")
+                    } else if (text.trim().length < 5) {
+                        setText2("sz 5tadan kam harf kritdingz")
+                    } else if (text.trim().length > 5) {
+                        setText2("sz 5tadan kop harf kritdingz")
+                    }
+                }
+
+                return (
+                    <>
+                        <input type="text" placeholder="salom db yozing" value={text} onChange={(e) => setText(e.target.value)} />
+                        <h2>{text}</h2>
+                        <p>{text2}</p>
+                        <button onClick={handleButton}>press</button>
+                    </>
+                )
+            }
+
+
+
+            const root = document.getElementById('root')
+            const app = ReactDOM.createRoot(root)
+            app.render(<App />)
+        </script>
+    </body>
+
+</html>
